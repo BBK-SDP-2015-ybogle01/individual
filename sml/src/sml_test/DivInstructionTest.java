@@ -4,8 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import sml.DivInstruction;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 public class DivInstructionTest {
     MachineMock m;
@@ -28,12 +27,15 @@ public class DivInstructionTest {
     public void testExecuteDivideByZero() throws Exception {
         // 15 / 0 into reg-5
         m.getRegisters().setRegister(10,15);
-        m.getRegisters().setRegister(11,0);
+        m.getRegisters().setRegister(11, 0);
         new DivInstruction("L1", 5, 10, 11).execute(m);
     }
 
     @Test
-    public void testToString() throws Exception {
-        fail();
+    public void testToString() {
+        m.getRegisters().setRegister(0,10);
+        m.getRegisters().setRegister(30,20);
+        String s = new DivInstruction("L3", 20, 0, 30).toString();
+        assertTrue("result was " + s, "L3: div 0 / 30 to 20".equals(s));
     }
 }
