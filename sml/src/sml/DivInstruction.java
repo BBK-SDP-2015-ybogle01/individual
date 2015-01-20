@@ -28,6 +28,6 @@ public class DivInstruction extends Instruction {
 
     @Override
     public String toString() {
-        return null;
+        return super.toString() + " " + op1 + " / " + op2 + " to " + result;
     }
 }
