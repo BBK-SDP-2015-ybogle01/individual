@@ -20,7 +20,7 @@ public class DivInstruction extends Instruction {
     }
 
     @Override
-    public void execute(Machine m) {
+    public void execute(Machine m) throws ArithmeticException {
         int value1 = m.getRegisters().getRegister(op1);
         int value2 = m.getRegisters().getRegister(op2);
         m.getRegisters().setRegister(result, value1 / value2);
