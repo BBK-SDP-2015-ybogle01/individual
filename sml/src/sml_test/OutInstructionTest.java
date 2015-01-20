@@ -2,8 +2,9 @@ package sml_test;
 
 import org.junit.Before;
 import org.junit.Test;
+import sml.OutInstruction;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 public class OutInstructionTest {
     MachineMock m;
@@ -15,7 +16,8 @@ public class OutInstructionTest {
 
     @Test
     public void testExecute() {
-        fail();
+        // print contents of reg-31 to console. Should be 0
+        new OutInstruction("L1", 31).execute(m);
     }
 
     @Test

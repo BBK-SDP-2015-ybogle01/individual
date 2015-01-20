@@ -17,11 +17,11 @@ public class OutInstruction extends Instruction {
 
     @Override
     public void execute(Machine m) {
-        m.getRegisters().setRegister(register, value);
+        System.out.println(m.getRegisters().getRegister(register));
     }
 
     @Override
     public String toString() {
-        return super.toString() + " register " + register + " value is " + value;
+        return super.toString() + " register " + register + " value is ";
     }
 }
