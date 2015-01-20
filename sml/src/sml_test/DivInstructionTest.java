@@ -4,10 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class DivInstructionTest {
+    MachineMock m;
 
     @Before
     public void setUp() throws Exception {
-
+        m = new MachineMock();
     }
 
     @Test
