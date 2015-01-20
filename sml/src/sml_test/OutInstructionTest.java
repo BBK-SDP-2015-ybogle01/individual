@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import sml.OutInstruction;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 public class OutInstructionTest {
     MachineMock m;
@@ -22,6 +22,7 @@ public class OutInstructionTest {
 
     @Test
     public void testToString() {
-        fail();
+        String s = new OutInstruction("L50", 20).toString();
+        assertTrue("result was " + s, "L50: out printed contents of register 20".equals(s));
     }
 }

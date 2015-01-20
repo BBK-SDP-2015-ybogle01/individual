@@ -22,6 +22,6 @@ public class OutInstruction extends Instruction {
 
     @Override
     public String toString() {
-        return super.toString() + " register " + register + " value is ";
+        return super.toString() + " printed contents of register " + register;
     }
 }
