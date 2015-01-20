@@ -15,7 +15,7 @@ public class MulInstructionTest {
     }
 
     @Test
-    public void testMultiplyTwoNumber() {
+    public void testExecuteMultiplyTwoNumber() {
         // 5 * 3 into reg-5
         m.getRegisters().setRegister(10,5);
         m.getRegisters().setRegister(11,3);
