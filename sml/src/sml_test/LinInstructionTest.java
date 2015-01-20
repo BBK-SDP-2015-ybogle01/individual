@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import sml.LinInstruction;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class LinInstructionTest {
     MachineMock m;
@@ -22,7 +22,8 @@ public class LinInstructionTest {
     }
 
     @Test
-    public void testToString() throws Exception {
-
+    public void testToString() {
+        String s = new LinInstruction("L50", 20, 666).toString();
+        assertTrue("result was " + s, "L50: lin register 20 value is 666".equals(s));
     }
 }
