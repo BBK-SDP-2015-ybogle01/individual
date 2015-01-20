@@ -5,6 +5,7 @@ import lombok.Data;
 /**
  * Created by byakov on 19/01/2015.
  */
+
 @Data
 public class Registers {
 

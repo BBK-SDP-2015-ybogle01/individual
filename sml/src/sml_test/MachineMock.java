@@ -8,5 +8,7 @@ import sml.Registers;
  */
 
 public class MachineMock extends Machine {
-    Registers registers = new Registers();
+    public MachineMock() {
+        setRegisters(new Registers());
+    }
 }

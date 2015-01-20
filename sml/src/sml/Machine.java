@@ -1,8 +1,7 @@
 package sml;
 
-import java.util.ArrayList;
-
 import lombok.Data;
+import java.util.ArrayList;
 
 /**
  * Created by byakov on 19/01/2015.
