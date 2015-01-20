@@ -14,8 +14,11 @@ public class BnzInstructionTest {
     }
 
     @Test
-    public void testExecute() {
-        fail();
+    public void testExecuteIsNotZero() {
+        // check reg-10 which isn't 0
+        m.getRegisters().setRegister(10, 10);
+        new BnzInstructionTest("L1", 10, "L50");
+
     }
 
     @Test
