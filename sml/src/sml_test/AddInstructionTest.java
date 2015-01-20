@@ -6,6 +6,7 @@ import sml.AddInstruction;
 import sml.Machine;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class AddInstructionTest {
     Machine m;
@@ -25,7 +26,16 @@ public class AddInstructionTest {
     }
 
     @Test
-    public void testToString() {
+    public void testExecuteAddIntoLastRegister() {
+        // 3 + 5 with result into reg-31
+        m.getRegisters().setRegister(10,3);
+        m.getRegisters().setRegister(20,5);
+        new AddInstruction("L2", 31, 20, 10).execute(m);
+        assertEquals(8, m.getRegisters().getRegister(31));
+    }
 
+    @Test
+    public void testToString() {
+        fail();
     }
 }
