@@ -25,4 +25,9 @@ public class MulInstruction extends Instruction {
         int value2 = m.getRegisters().getRegister(op2);
         m.getRegisters().setRegister(result, value1 * value2);
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " " + op1 + " * " + op2 + " to " + result;
+    }
 }
