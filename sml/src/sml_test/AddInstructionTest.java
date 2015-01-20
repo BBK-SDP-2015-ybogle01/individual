@@ -6,7 +6,7 @@ import sml.AddInstruction;
 import sml.Machine;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertTrue;
 
 public class AddInstructionTest {
     Machine m;
@@ -36,6 +36,9 @@ public class AddInstructionTest {
 
     @Test
     public void testToString() {
-        fail();
+        m.getRegisters().setRegister(3,33);
+        m.getRegisters().setRegister(6,66);
+        String s = new AddInstruction("L3", 0, 3, 6).toString();
+        assertTrue("result was " + s, "L3: add 3 + 6 to 0".equals(s));
     }
 }
