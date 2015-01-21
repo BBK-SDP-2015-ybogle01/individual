@@ -34,7 +34,7 @@ public class Machine {
     public static void main(String[] args) {
 
         Machine m = new Machine();
-        Translator t = new Translator("testdata.txt");
+        Translator t = new Translator("testdata.txt"); //TODO return method arg to original param.
         t.readAndTranslate(m.getLabels(), m.getProg());
 
         System.out.println("Here is the program; it has " + m.getProg().size() + " instructions.");

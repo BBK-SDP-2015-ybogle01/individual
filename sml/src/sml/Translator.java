@@ -19,7 +19,7 @@ public class Translator {
     private ArrayList<Instruction> program; // The program to be created
     private String fileName; // source file of SML code
 
-    private static final String SRC = "C:\\src\\individual\\sml\\src\\sml_test";
+    private static final String SRC = "C:\\src\\individual\\sml\\src\\sml_test"; //TODO return SRC to original consstant val.
 
     public Translator(String fileName) {
         this.fileName = SRC + "\\" + fileName;
