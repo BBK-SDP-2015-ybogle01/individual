@@ -42,6 +42,6 @@ public class BnzInstructionTest {
     public void testToString() {
         m.getRegisters().setRegister(30,0);
         String s = new BnzInstruction("L3", 30, "Branch").toString();
-        assertTrue("result was " + s, "L3: bnz register 30 value is 0; potential branch is 'Branch'".equals(s));
+        assertTrue("result was " + s, "L3: bnz test register 30; potential branch is 'Branch'".equals(s));
     }
 }

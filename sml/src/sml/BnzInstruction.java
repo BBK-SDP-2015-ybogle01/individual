@@ -25,6 +25,6 @@ public class BnzInstruction extends Instruction {
 
     @Override
     public String toString() {
-        return null;
+        return super.toString() + " test register " + register + "; potential branch is '" + branchLabel + "'";
     }
 }
