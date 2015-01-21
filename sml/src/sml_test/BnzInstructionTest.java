@@ -3,6 +3,7 @@ package sml_test;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 public class BnzInstructionTest {
@@ -17,8 +18,12 @@ public class BnzInstructionTest {
     public void testExecuteIsNotZero() {
         // check reg-10 which isn't 0
         m.getRegisters().setRegister(10, 10);
-        new BnzInstructionTest("L1", 10, "L50");
-
+        m.getLabels().addLabel("Null-1");
+        m.getLabels().addLabel("Null-2");
+        m.getLabels().addLabel("Null-3");
+        m.getLabels().addLabel("BranchTarget");
+        new BnzInstructionTest("L1", 10, "BranchTarget");
+        assertEquals(4, m.getPc());
     }
 
     @Test
