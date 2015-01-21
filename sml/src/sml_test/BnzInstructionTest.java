@@ -28,6 +28,18 @@ public class BnzInstructionTest {
     }
 
     @Test
+    public void testExecuteIsZero() {
+        // check reg-5 which is 0
+        m.getRegisters().setRegister(5, 0);
+        m.getLabels().addLabel("Null-0");
+        m.getLabels().addLabel("Null-1");
+        m.getLabels().addLabel("Null-2");
+        m.getLabels().addLabel("BranchTarget");
+        new BnzInstruction("L1", 5, "BranchTarget").execute(m);
+        assertEquals(0, m.getPc());
+    }
+
+    @Test
     public void testToString() {
         fail();
     }
