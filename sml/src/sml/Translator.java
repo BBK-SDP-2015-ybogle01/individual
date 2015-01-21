@@ -19,10 +19,10 @@ public class Translator {
     private ArrayList<Instruction> program; // The program to be created
     private String fileName; // source file of SML code
 
-    private static final String SRC = "src";
+    private static final String SRC = "C:\\src\\individual\\sml\\src\\sml_test";
 
     public Translator(String fileName) {
-        this.fileName = SRC + "/" + fileName;
+        this.fileName = SRC + "\\" + fileName;
     }
 
     // translate the small program in the file into lab (the labels) and
@@ -88,6 +88,11 @@ public class Translator {
                 s1 = scanInt();
                 s2 = scanInt();
                 return new AddInstruction(label, r, s1, s2);
+            case "sub":
+                r = scanInt();
+                s1 = scanInt();
+                s2 = scanInt();
+                return new SubInstruction(label, r, s1, s2);
             case "lin":
                 r = scanInt();
                 s1 = scanInt();
