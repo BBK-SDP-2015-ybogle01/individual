@@ -4,8 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import sml.BnzInstruction;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 public class BnzInstructionTest {
     MachineMock m;
@@ -41,6 +40,8 @@ public class BnzInstructionTest {
 
     @Test
     public void testToString() {
-        fail();
+        m.getRegisters().setRegister(30,0);
+        String s = new BnzInstruction("L3", 30, "Branch").toString();
+        assertTrue("result was " + s, "L3: bnz register 30 value is 0; potential branch is 'Branch'".equals(s));
     }
 }
