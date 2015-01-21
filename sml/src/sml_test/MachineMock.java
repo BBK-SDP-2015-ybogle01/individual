@@ -1,5 +1,6 @@
 package sml_test;
 
+import sml.Labels;
 import sml.Machine;
 import sml.Registers;
 
@@ -10,5 +11,6 @@ import sml.Registers;
 public class MachineMock extends Machine {
     public MachineMock() {
         setRegisters(new Registers());
+        setLabels(new Labels());
     }
 }
