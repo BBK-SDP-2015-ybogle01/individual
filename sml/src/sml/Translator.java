@@ -81,7 +81,6 @@ public class Translator {
         if (line.equals(""))
             return null;
 
-        // TODO: read ins using scan() and make String "sml.<Ins>Instruction", then call Class.forName(str) on it
         // TODO: figure out how to get the correct constructor, i.e. the one with all the params
         // TODO: this tells you how many scanInt() you need to get the instr params, and their types (via a loop)
         // TODO: then call the non-default constructor using the appropriate params and call execute on the resulting object
@@ -92,7 +91,12 @@ public class Translator {
                 first +
                 ins.substring(1) +
                 "Instruction";
-
+        Class<?> c = null;
+        try {
+            c = Class.forName(insName);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         return null;
     }
