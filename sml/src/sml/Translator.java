@@ -94,13 +94,15 @@ public class Translator {
                 "Instruction";
 
         // Load the class object and obtain the correct constructor
-        Constructor<?> cstr = null;
+        Constructor<?> cstr;
+        Class<?>[] cstrParams = null;
         try {
             Class<?> instrClass = Class.forName(insName);
             Constructor<?>[] cstrArr = instrClass.getConstructors();
-            for (int i = 0; i < cstrArr.length; i++) {
-                if (cstrArr[i].getParameters().length > 2) {
-                    cstr = cstrArr[i];
+            for (Constructor<?> aCstrArr : cstrArr) {
+                if (aCstrArr.getParameters().length > 2) {
+                    cstr = aCstrArr;
+                    cstrParams = cstr.getParameterTypes();
                     break;
                 }
             }
