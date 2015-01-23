@@ -81,6 +81,11 @@ public class Translator {
         if (line.equals(""))
             return null;
 
+        // TODO: read ins using scan() and make String "sml.<Ins>Instruction", then call Class.forName(str) on it
+        // TODO: figure out how to get the correct constructor, i.e. the one with all the params
+        // TODO: this tells you how many scanInt() you need to get the instr params, and their types (via a loop)
+        // TODO: then call the non-default constructor using the appropriate params and call execute on the resulting object
+        // TODO: passes reflection test because you can add new instr simply by writing their class - no change needed for this bit of code
         String ins = scan();
         switch (ins) {
             case "add":
