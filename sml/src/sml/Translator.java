@@ -111,6 +111,7 @@ public class Translator {
         } catch (ClassNotFoundException | NullPointerException e) {
             e.printStackTrace();
         }
+        // Read the correct params from file and pass them to the correct Instruction constructor + return new instance
         try {
             return (Instruction) cstr.newInstance(getParamObjectArray(cstrParams, label));
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
@@ -119,6 +120,12 @@ public class Translator {
         return null;
     }
 
+    /**
+     * Takes parameter classes, instantiates them, and returns the resulting object array
+     * @param paramClasses array of parameter classes used by the constructor
+     * @param label the first parameter is always the instruction label, which was read earlier
+     * @return object array of parameters to the constructor, in declaration order
+     */
     private Object[] getParamObjectArray(Class<?>[] paramClasses, String label) {
         Object[] params = new Object[paramClasses.length];
         params[0] = label;
