@@ -84,9 +84,6 @@ public class Translator {
         if (line.equals(""))
             return null;
 
-        // TODO: this tells you how many scanInt() you need to get the instr params, and their types (via a loop)
-        // TODO: then call the non-default constructor using the appropriate params and call execute on the resulting object
-        // TODO: passes reflection test because you can add new instr simply by writing their class - no change needed for this bit of code
         // Get the instruction class's name
         String ins = scan().toLowerCase();
         char first = Character.toUpperCase(ins.charAt(0));
