@@ -113,6 +113,16 @@ public class Translator {
         return null;
     }
 
+    private Object[] getParamObjectArray(Class<?>[] paramClasses) {
+        Object[] params = new Object[paramClasses.length];
+        for (int i = 0; i < paramClasses.length; i++) {
+            Class<?> aClass = paramClasses[i];
+            if (aClass.getSimpleName().equals("String")) params[i] = scan();
+            else params[i] = scanInt();
+        }
+        return params;
+    }
+
     /*
      * Return the first word of line and remove it from line. If there is no
      * word, return ""
