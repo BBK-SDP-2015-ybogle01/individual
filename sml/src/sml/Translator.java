@@ -2,6 +2,7 @@ package sml;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -81,20 +82,29 @@ public class Translator {
         if (line.equals(""))
             return null;
 
-        // TODO: figure out how to get the correct constructor, i.e. the one with all the params
         // TODO: this tells you how many scanInt() you need to get the instr params, and their types (via a loop)
         // TODO: then call the non-default constructor using the appropriate params and call execute on the resulting object
         // TODO: passes reflection test because you can add new instr simply by writing their class - no change needed for this bit of code
+        // Get the instruction class's name
         String ins = scan().toLowerCase();
         char first = Character.toUpperCase(ins.charAt(0));
         String insName = "sml." +
                 first +
                 ins.substring(1) +
                 "Instruction";
-        Class<?> c = null;
+
+        // Load the class object and obtain the correct constructor
+        Constructor<?> cstr = null;
         try {
-            c = Class.forName(insName);
-        } catch (ClassNotFoundException e) {
+            Class<?> instrClass = Class.forName(insName);
+            Constructor<?>[] cstrArr = instrClass.getConstructors();
+            for (int i = 0; i < cstrArr.length; i++) {
+                if (cstrArr[i].getParameters().length > 2) {
+                    cstr = cstrArr[i];
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | NullPointerException e) {
             e.printStackTrace();
         }
 
