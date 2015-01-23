@@ -3,7 +3,9 @@ package sml;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -94,14 +96,14 @@ public class Translator {
                 "Instruction";
 
         // Load the class object and obtain the correct constructor
-        Constructor<?> cstr;
+        Constructor<?> cstr = null;
         Class<?>[] cstrParams = null;
         try {
             Class<?> instrClass = Class.forName(insName);
             Constructor<?>[] cstrArr = instrClass.getConstructors();
-            for (Constructor<?> aCstrArr : cstrArr) {
-                if (aCstrArr.getParameters().length > 2) {
-                    cstr = aCstrArr;
+            for (Constructor<?> aCstr : cstrArr) {
+                if (Arrays.asList(aCstr.getParameterTypes()).contains(int.class)) {
+                    cstr = aCstr;
                     cstrParams = cstr.getParameterTypes();
                     break;
                 }
@@ -109,13 +111,18 @@ public class Translator {
         } catch (ClassNotFoundException | NullPointerException e) {
             e.printStackTrace();
         }
-
+        try {
+            return (Instruction) cstr.newInstance(getParamObjectArray(cstrParams, label));
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
-    private Object[] getParamObjectArray(Class<?>[] paramClasses) {
+    private Object[] getParamObjectArray(Class<?>[] paramClasses, String label) {
         Object[] params = new Object[paramClasses.length];
-        for (int i = 0; i < paramClasses.length; i++) {
+        params[0] = label;
+        for (int i = 1; i < paramClasses.length; i++) {
             Class<?> aClass = paramClasses[i];
             if (aClass.getSimpleName().equals("String")) params[i] = scan();
             else params[i] = scanInt();
