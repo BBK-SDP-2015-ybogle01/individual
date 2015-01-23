@@ -86,42 +86,13 @@ public class Translator {
         // TODO: this tells you how many scanInt() you need to get the instr params, and their types (via a loop)
         // TODO: then call the non-default constructor using the appropriate params and call execute on the resulting object
         // TODO: passes reflection test because you can add new instr simply by writing their class - no change needed for this bit of code
-        String ins = scan();
-        switch (ins) {
-            case "add":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                return new AddInstruction(label, r, s1, s2);
-            case "sub":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                return new SubInstruction(label, r, s1, s2);
-            case "mul":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                return new MulInstruction(label, r, s1, s2);
-            case "div":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                return new DivInstruction(label, r, s1, s2);
-            case "lin":
-                r = scanInt();
-                s1 = scanInt();
-                return new LinInstruction(label, r, s1);
-            case "out":
-                r = scanInt();
-                return new OutInstruction(label, r);
-            case "bnz":
-                r = scanInt();
-                x = scan();
-                return new BnzInstruction(label, r, x);
-        }
+        String ins = scan().toLowerCase();
+        char first = Character.toUpperCase(ins.charAt(0));
+        String insName = "sml." +
+                first +
+                ins.substring(1) +
+                "Instruction";
 
-        // You will have to write code here for the other instructions.
 
         return null;
     }
