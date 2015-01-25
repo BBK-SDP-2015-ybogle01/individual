@@ -22,10 +22,10 @@ public class Translator {
     private ArrayList<Instruction> program; // The program to be created
     private String fileName; // source file of SML code
 
-    private static final String SRC = "C:\\src\\individual\\sml\\src\\sml_test"; //TODO return SRC to original consstant val.
+    private static final String SRC = "src";
 
     public Translator(String fileName) {
-        this.fileName = SRC + "\\" + fileName;
+        this.fileName = SRC + "/" + fileName;
     }
 
     // translate the small program in the file into lab (the labels) and
